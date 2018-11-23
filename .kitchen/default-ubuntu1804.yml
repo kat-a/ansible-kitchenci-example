@@ -1,7 +1,0 @@
----
-hostname: 127.0.0.1
-port: '2200'
-username: vagrant
-ssh_key: "/Users/kata/DATA/TechnikumWien/SEM_5/Cloud/PROJECTS/ansible/ansible_kitchen_ci_example/.kitchen/kitchen-vagrant/default-ubuntu1804/.vagrant/machines/default/virtualbox/private_key"
-last_action: converge
-last_error: 

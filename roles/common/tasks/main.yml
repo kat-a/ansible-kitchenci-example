@@ -81,13 +81,13 @@
     src: ./roles/common/templates/motd.j2
     dest: /etc/motd
 
-- name: motd displayed twice
+- name: motd displayed twice remove first line 
   lineinfile:
     path: /etc/pam.d/sshd
     state: absent
     regexp: '^.*pam_motd.so  motd=/run/motd.dynamic'
 
-- name: motd displayed twice
+- name: motd displayed twice remove sec line
   lineinfile:
     path: /etc/pam.d/sshd
     state: absent

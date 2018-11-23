@@ -15,9 +15,6 @@ provisioner:
   playbook: ./playbook.yml
 
 platforms:
-#  - name: ubuntu18.04
-#    driver_config:
-#      box: ubuntu/bionic64
   - name: ubuntu16.04
     driver_config:
       box: bento/ubuntu-16.04

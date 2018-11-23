@@ -34,15 +34,14 @@
 
 ## Tools
 
-|             |                                                     |
 | ----------- | ----------------------------------------------------|
-| Vagrant     | [https://www.vagrantup.com/][website]				|
-| Virtualbox  | [https://www.virtualbox.org/][website]				|
-| Bundler     | [https://bundler.io/][website]	                    |
-| Pipenv      | [https://pipenv.readthedocs.io/en/latest/][website] |
-| KitchenCI   | [http://kitchen.ci][website]                        |
-| Ansible     | [https://docs.ansible.com/][website]                |
-| Inspec      | [https://www.inspec.io/][website]                   |
+| Vagrant     | [https://www.vagrantup.com/]				        |
+| Virtualbox  | [https://www.virtualbox.org/]       				|
+| Bundler     | [https://bundler.io/]	                            |
+| Pipenv      | [https://pipenv.readthedocs.io/en/latest/]          |
+| KitchenCI   | [http://kitchen.ci]                                 |
+| Ansible     | [https://docs.ansible.com/]                         |
+| Inspec      | [https://www.inspec.io/]                            |
 
 ## Setup
 

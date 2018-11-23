@@ -36,7 +36,9 @@ control 'package-02' do
     its('groups') { should eq ['ckappel', 'sudo'] }
     its('home') { should eq '/home/kappelc' }
     its('shell') { should eq '/bin/zsh' }
-    # pubkey deployd
+  end
+  describe file('/home/kappelc/.ssh/authorized_keys') do
+    its('content') { should cmp "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1jsQvZLGb9edcI9Etm9HUaZC3+94IoTgTb650a/zpC968UQ6d0qsZbxL39+dc8qvh7vNlKEOjMEuw7gtuXSf1fGz/EhYSD5zehA1Dm8Exg1CTvJq6CyvLhEYdhGYsD7EDhjuPEVCHNnVcHnD5zJQARptULo1Ja6kHIm087BLpUg+aiotIVuW05mjhM+5JFeQUlqmMlEyiw3yFuPdr3SPW136UI53x2exrJCezWXDwfTa8ufoFEg/fWJ3Bditjqg5YPmh+GhlKwy/2XtkOEtTYeJTqbFzWiBp3Aite5AnTCBSJVOUeOq2bcsIYwAmJ/hAUQOepgK65TAzeuwvSfdt3 user@laptop234.local\n" }
   end
   describe user('animmervoll') do
     it { should exist }
@@ -58,6 +60,10 @@ control 'package-03' do
     its('PubkeyAuthentication') { should eq ["yes", "yes"] }
     its('Match') { should eq ["User ckappel Address *", "User vagrant Address 10.0.2.0/24"] }
   end
+  describe service 'sshd' do
+    it { should be_enabled }
+    it { should be_running }
+end
 end
 
 describe file '/etc/motd' do

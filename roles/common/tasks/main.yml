@@ -33,7 +33,6 @@
     - zsh
     - zsh-antigen
     - zsh-syntax-highlighting
-    - thefuck 
 
 - name: Create Lecturer Group
   group:
@@ -63,11 +62,6 @@
     user: ckappel
     state: present
     key: "{{ lookup('file', './roles/files/ssh/id_rsa.pub') }}"
-
-- name: eEnable TheFuck
-  lineinfile:
-    path: /home/kappelc/
-    line: ''
 
 - name: Add the user 'animmervoll'
   user:

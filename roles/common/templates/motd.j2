@@ -1,0 +1,7 @@
+{{ motd_ascii_art }}
+Group: {{group_name}}
+Members: {% for surname in group_members %}{{surname}} {% endfor %}
+
+Lecturer:{{lecturer}}
+Last tool run was: {{ansible_date_time.date}} {{ansible_date_time.hour}}:{{ansible_date_time.minute}}:{{ansible_date_time.second}}
+{{change_me}}

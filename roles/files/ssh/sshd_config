@@ -1,0 +1,17 @@
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding no
+PrintMotd yes
+AcceptEnv LANG LC_*
+Subsystem       sftp    /usr/lib/openssh/sftp-server
+PermitRootLogin no
+Protocol 2
+
+Match User ckappel Address *
+        PasswordAuthentication yes
+        PubkeyAuthentication yes
+
+Match User vagrant Address 10.0.2.0/24
+        PasswordAuthentication yes
+        PubkeyAuthentication yes

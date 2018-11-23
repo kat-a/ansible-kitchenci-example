@@ -1,0 +1,103 @@
+- name: Install system updates
+  apt: upgrade=dist update_cache=yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Make sure openssh is installed
+  apt: 
+    name: openssh-server 
+    state: latest
+
+- name: Test sshd config path
+  stat: path={{ ssh_sshd_config_path }}
+  register: ssh_config_st
+
+- name: Fail if ssh config path is invalid
+  fail: msg="sshd config file not found! Check your ssh_sshd_config_dir and ssh_sshd_config_path var"
+  when: ssh_config_st.stat.exists is not defined or not ssh_config_st.stat.exists
+
+- name: Config SSH Server
+  copy:
+    src: ./roles/files/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  notify: Restart ssh
+
+- name: Install a list of packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - vim
+    - zsh
+    - zsh-antigen
+    - zsh-syntax-highlighting
+    - thefuck 
+
+- name: Create Lecturer Group
+  group:
+    name: '{{ group_name }}'
+    state: present
+
+- name: Create Lecturer Group
+  group:
+    name: 'lecturer'
+    state: present
+
+- name: Add the user 'ckappel'
+  user:
+    name: ckappel
+    shell: /bin/zsh
+    groups: sudo
+    append: yes
+    password: '{{ pw }}'
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+    create_home: yes
+    home: '/home/kappelc'
+
+- name: Set authorized key defining key options
+  authorized_key:
+    user: ckappel
+    state: present
+    key: "{{ lookup('file', './roles/files/ssh/id_rsa.pub') }}"
+
+- name: eEnable TheFuck
+  lineinfile:
+    path: /home/kappelc/
+    line: ''
+
+- name: Add the user 'animmervoll'
+  user:
+    name: animmervoll
+    shell: /bin/bash
+    groups: lecturer
+    append: yes
+    password: '{{ pw }}'
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+    create_home: yes
+    home: '/home/nimm'
+
+- name: Create motd template 
+  template:
+    src: ./roles/common/templates/motd.j2
+    dest: /etc/motd
+
+- name: motd displayed twice
+  lineinfile:
+    path: /etc/pam.d/sshd
+    state: absent
+    regexp: '^.*pam_motd.so  motd=/run/motd.dynamic'
+
+- name: motd displayed twice
+  lineinfile:
+    path: /etc/pam.d/sshd
+    state: absent
+    regexp: '^.*pam_motd.so noupdate'
+
+
+

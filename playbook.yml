@@ -1,0 +1,17 @@
+- name: Add configurations for Debian
+  hosts: all
+  become: yes
+  remote_user: root
+  roles:
+    - common
+#  vars:
+#    group_name: 'GROUP1'
+#    group_members: ['Burrows','Karner','Vrtis']
+#    lecturer: 'Kappel/Christoph'
+#    change_me: 'change me'
+#    
+#  tasks:
+#    - name: Create Lecturer Group
+#      group:
+#        name: lecturer
+#        state: present

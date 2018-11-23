@@ -1,0 +1,14 @@
+group_name: 'justanothergroup'
+group_members: ['kati','ian','ing']
+lecturer: lecturer
+pw: '$6$mysecretsalt$qJbapG68nyRab3gxvKWPUcs2g3t0oMHSHMnSKecYNpSi3CuZm.GbBqXO8BE6EI6P1JUefhA0qvD7b5LSh./PU1' # mypassword
+sudoers:
+  - ckappel
+  - animmervoll
+
+# motd
+motd_ascii_art: "     _              _ _     _\n    / \\   _ __  ___(_) |__ | | ___\n   / _ \\ | '_ \\/ __| | '_ \\| |/ _ \\\n  / ___ \\| | | \\__ \\ | |_) | |  __/\n /_/   \\_\\_| |_|___/_|_.__/|_|\\___|\n"
+change_me: 'Blubb'
+
+ssh_sshd_config_dir: /etc/ssh/
+ssh_sshd_config_path: "{{ ssh_sshd_config_dir }}sshd_config"

@@ -33,6 +33,7 @@
     - zsh
     - zsh-antigen
     - zsh-syntax-highlighting
+    - thefuck
 
 - name: Create Lecturer Group
   group:

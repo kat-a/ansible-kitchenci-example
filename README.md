@@ -34,6 +34,7 @@
 
 ## Tools
 
+| Tool        | Link                                                |
 | ----------- | ----------------------------------------------------|
 | Vagrant     | [https://www.vagrantup.com/]				        |
 | Virtualbox  | [https://www.virtualbox.org/]       				|
